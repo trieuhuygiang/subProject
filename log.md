@@ -25,9 +25,9 @@
   - ❌ DELETE: Not implemented (admin feature, optional)
 
 - **Reviews:**
-  - ✅ CREATE/UPDATE: `upsert()` in models/Review.js - Creates or updates review (smart handling)
-  - ✅ READ: `getReviewsByUser()`, `getReviewsByMovie()`
-  - ❌ DELETE: Not implemented yet
+  - ❌ CREATE/UPDATE: `upsert()` exists in model BUT no route/controller to use it
+  - ❌ READ: Methods exist in model BUT no route/controller to display them
+  - ❌ DELETE: Not implemented at all
 
 - **Users:**
   - ✅ Full CRUD from template (User.js model)
@@ -44,6 +44,21 @@
 - ✅ **Trending Algorithm**: Time-based review counting (last 7 days with JOIN queries)
 - ✅ **Popular Algorithm**: All-time review ranking with LEFT JOIN
 - ✅ **Smart Deduplication**: No duplicates between trending and popular lists
+
+---
+
+### 🔴 KEY ISSUE IDENTIFIED
+
+**The models have methods, but NO routes or controllers use them!**
+
+Example:
+- ✅ `Review.upsert()` exists in models/Review.js
+- ❌ But there's NO route like `POST /movies/:id/review`
+- ❌ And NO controller to handle review submission
+
+**This means:**
+- The backend logic exists (models)
+- But users have NO WAY to access it (no routes/views)
 
 ---
 
