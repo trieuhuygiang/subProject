@@ -1426,13 +1426,40 @@ res.render('search-results', {
 
 ---
 
+### Test Data Setup
+
+**Database Population:**
+Added 6 test movies to the database for testing review functionality:
+
+```sql
+-- Movies added (December 11, 2025)
+INSERT INTO movies (title, year, rating, genre, plot, image) VALUES 
+('The Matrix', 1999, 'R', 'Action, Sci-Fi', '...', 'https://...'),
+('Inception', 2010, 'PG-13', 'Action, Sci-Fi, Thriller', '...', 'https://...'),
+('The Shawshank Redemption', 1994, 'R', 'Drama', '...', 'https://...'),
+('The Dark Knight', 2008, 'PG-13', 'Action, Crime, Drama', '...', 'https://...'),
+('Pulp Fiction', 1994, 'R', 'Crime, Drama', '...', 'https://...'),
+('Forrest Gump', 1994, 'PG-13', 'Drama, Romance', '...', 'https://...');
+```
+
+**Result:** ✅ 6 movies successfully added (IDs: 1-6)
+
+**Access Movies:**
+- Home page: http://localhost:3000
+- Direct movie detail links:
+  - http://localhost:3000/movies/1 (The Matrix)
+  - http://localhost:3000/movies/2 (Inception)
+  - http://localhost:3000/movies/3 (The Shawshank Redemption)
+  - http://localhost:3000/movies/4 (The Dark Knight)
+  - http://localhost:3000/movies/5 (Pulp Fiction)
+
 ### Ready for Manual Testing
 
 **Server Status:** 🟢 Running on http://localhost:3000
 
 **Test Plan:**
 1. ⏳ Login with existing user
-2. ⏳ Navigate to movie detail page
+2. ⏳ Navigate to movie detail page (try http://localhost:3000/movies/1)
 3. ⏳ Submit a new review (test validation)
 4. ⏳ Edit the review
 5. ⏳ Verify flash messages display
