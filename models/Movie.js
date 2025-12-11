@@ -19,14 +19,14 @@ require("dotenv").config();
 
 // Insert Movie
 const insert = async (title, year, rating, genre, plot, image) => {
-    const result = await query(
-        `INSERT INTO movies (title, year, rating, genre, plot, image)
+  const result = await query(
+    `INSERT INTO movies (title, year, rating, genre, plot, image)
          VALUES ($1, $2, $3, $4, $5, $6)
          RETURNING *`,
-         [title, year, rating, genre, plot, image]
-    );
+    [title, year, rating, genre, plot, image]
+  );
 
-    return result.rows[0];
+  return result.rows[0];
 };
 
 const findMovieByTitle = async (title, year) => {
@@ -159,18 +159,44 @@ const findLocalMovies = async (title) => {
     `SELECT id, title, year, rating, genre, plot, image
      FROM movies
      WHERE title ILIKE $1`,
-    [`%${title}%`]        
+    [`%${title}%`]
   );
   return result.rows;
 };
 
+/**
+ * Find movie by ID with review count
+ * @param {number} id - Movie ID
+ * @returns {Promise<Object>} Movie object with review count
+ */
+const findById = async (id) => {
+  const result = await query(
+    `SELECT 
+       m.id,
+       m.title,
+       m.year,
+       m.rating,
+       m.genre,
+       m.plot,
+       m.image,
+       COUNT(r.user_id) AS review_count
+     FROM movies m
+     LEFT JOIN reviews r ON r.movie_id = m.id
+     WHERE m.id = $1
+     GROUP BY m.id`,
+    [id]
+  );
+  return result.rows[0] || null;
+};
+
 module.exports = {
-    insert,
-    findMovieByTitle,
-    getPopularMovies,
-    getTrendingMovies,
-    getAdditionalMovies,
-    findLocalMovies,
+  insert,
+  findMovieByTitle,
+  getPopularMovies,
+  getTrendingMovies,
+  getAdditionalMovies,
+  findLocalMovies,
+  findById,
 };
 
 

@@ -8,7 +8,7 @@ const Movie = require('../models/Movie');
 
 // Root page route
 router.get('/', (req, res) => {
-  res.render('index', { 
+  res.render('index', {
     title: 'Home',
     message: 'Welcome to the Movie Review',
     isAuthenticated: req.session.user,
@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
 
 // About page route
 router.get('/about', (req, res) => {
-  res.render('about', { 
+  res.render('about', {
     title: 'About',
     message: 'Learn about this application',
     isAuthenticated: req.session.user,
@@ -92,6 +92,7 @@ router.get('/search', async (req, res, next) => {
       title: 'Search Results',
       query,
       results,
+      error: null,
       isAuthenticated: req.session.user,
       path: req.path
     });
