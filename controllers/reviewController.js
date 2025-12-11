@@ -38,13 +38,13 @@ exports.addReview = async (req, res, next) => {
 };
 
 /**
- * DELETE /movies/:movieId/reviews/:userId
- * Delete a user's review (Phase 4)
+ * DELETE /movies/:id
+ * Delete current user's review for a movie
  */
 exports.deleteReview = async (req, res, next) => {
     try {
         const userId = req.session.user.id;
-        const movieId = req.params.movieId;
+        const movieId = req.params.id;
 
         // Verify user owns this review (authorization check)
         const deleted = await Review.deleteReview(userId, movieId);
@@ -56,6 +56,9 @@ exports.deleteReview = async (req, res, next) => {
             });
         }
 
+        // Set success message in session for redirect
+        req.session.successMessage = 'Review deleted successfully!';
+        
         res.json({ success: true, message: 'Review deleted successfully' });
     } catch (error) {
         console.error('Error deleting review:', error);

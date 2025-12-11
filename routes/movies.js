@@ -25,7 +25,7 @@ router.get('/:id', movieController.getMovieDetail);
 // POST /movies/:id/review - Add/update review (authenticated users only)
 router.post('/:id/review', isAuthenticated, reviewValidation, reviewController.addReview);
 
-// DELETE /movies/:movieId/reviews/:userId - Delete review (Phase 4)
-router.delete('/:movieId/reviews/:userId', isAuthenticated, reviewController.deleteReview);
+// DELETE /movies/:id - Delete review for current user (Phase 4)
+router.delete('/:id', isAuthenticated, reviewController.deleteReview);
 
 module.exports = router;

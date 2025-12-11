@@ -210,14 +210,30 @@
             updateCharCount();
         }
 
-        // Delete review function (for Phase 4)
+        // Delete review function (Phase 4 - IMPLEMENTED)
         function deleteReview() {
             if (confirm('Are you sure you want to delete your review? This action cannot be undone.')) {
-                alert('Delete functionality will be implemented in Phase 4');
-                // Will be implemented in Phase 4:
-                // fetch('/movies/reviews/<%= movie.id %>', { method: 'DELETE' })
-                // .then(res => res.json())
-                // .then(data => { if (data.success) window.location.reload(); })
+                const movieId = '<%= movie.id %>';
+                
+                fetch(`/movies/${movieId}`, { 
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+                        // Reload page to show updated reviews list and success message
+                        window.location.reload();
+                    } else {
+                        alert('Error deleting review: ' + (data.error || 'Unknown error'));
+                    }
+                })
+                .catch(err => {
+                    console.error('Delete error:', err);
+                    alert('Failed to delete review');
+                });
             }
         }
     </script>

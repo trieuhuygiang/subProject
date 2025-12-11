@@ -67,9 +67,26 @@ const getReviewsWithUsernames = async (movieId) => {
     return result.rows;
 };
 
+/**
+ * Delete a user's review
+ * @param {number} userId - User ID (from session)
+ * @param {number} movieId - Movie ID
+ * @returns {Promise<boolean>} True if review was deleted, false if not found
+ */
+const deleteReview = async (userId, movieId) => {
+    const result = await query(
+        `DELETE FROM reviews
+        WHERE user_id = $1 AND movie_id = $2
+        RETURNING *`,
+        [userId, movieId]
+    );
+    return result.rowCount > 0;
+};
+
 module.exports = {
     upsert,
     getReviewsByUser,
     getReviewsByMovie,
     getReviewsWithUsernames,
+    deleteReview,
 };
