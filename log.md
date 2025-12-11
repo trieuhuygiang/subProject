@@ -1469,7 +1469,99 @@ INSERT INTO movies (title, year, rating, genre, plot, image) VALUES
 
 ---
 
-**End of Log**  
+## 📊 Comparison: Your Work vs Assignment 5 Template
+
+### Original Assignment 5 Template
+Located at: `/home/ubuntu/CSC317/assignments/5/`
+
+**Files in template:**
+```
+controllers/
+  ├─ authController.js          (provided)
+  └─ userController.js          (provided)
+
+routes/
+  ├─ auth.js                    (provided)
+  ├─ index.js                   (provided)
+  └─ user.js                    (provided)
+
+models/
+  ├─ User.js                    (provided)
+  ├─ Movie.js                   (provided - with OMDb integration)
+  └─ Review.js                  (provided - with upsert method)
+
+views/
+  ├─ home.ejs                   (provided)
+  ├─ about.ejs                  (provided)
+  ├─ error.ejs                  (provided)
+  ├─ auth/                      (provided)
+  ├─ user/                      (provided)
+  └─ partials/                  (provided)
+```
+
+### Your Enhanced Version
+Located at: `/home/ubuntu/subProject/`
+
+**NEW FILES YOU CREATED:**
+```
+✅ controllers/movieController.js          (QUYNH CREATED)
+✅ controllers/reviewController.js         (QUYNH CREATED)
+✅ routes/movies.js                        (QUYNH CREATED)
+✅ views/movies/detail.ejs                 (QUYNH CREATED)
+```
+
+**MODIFIED FILES:**
+```
+✅ models/Movie.js              - Added findById() method
+✅ models/Review.js             - Modified (Review model already existed)
+✅ app.js                        - Added movie routes registration
+✅ routes/index.js              - Fixed search results error variable
+✅ log.md                        - Added comprehensive documentation
+```
+
+**EXISTING FILES (UNCHANGED from template):**
+```
+- controllers/authController.js
+- controllers/userController.js
+- routes/auth.js
+- routes/index.js
+- routes/user.js
+- models/User.js
+- views/home.ejs
+- views/about.ejs
+- etc...
+```
+
+---
+
+### Summary of quynh's Contributions (Full-Stack Features)
+
+**Backend (Server-Side):**
+- ✅ Movie detail route: GET `/movies/:id`
+- ✅ Review submission route: POST `/movies/:id/review`
+- ✅ Review deletion route: DELETE `/movies/:movieId/reviews/:userId`
+- ✅ Express-validator middleware for review validation
+- ✅ Flash message system for user feedback
+- ✅ Database query methods (findById, getReviewsWithUsernames)
+
+**Frontend (Client-Side):**
+- ✅ Movie detail page template (`/views/movies/detail.ejs`)
+- ✅ Review form with character counter
+- ✅ Client-side validation (HTML5 + JavaScript)
+- ✅ Real-time validation feedback
+- ✅ Success/error message display
+
+**Features Implemented:**
+- ✅ Phase 1: Movie detail pages with review display
+- ✅ Phase 2: Review submission with validation
+- ✅ Phase 3: Review editing with upsert
+- ⏳ Phase 4: Review deletion (backend ready, frontend pending)
+
+---
+
+**End of Comparison Section**
+
+---  
 *✅ Phases 1-3 COMPLETED - Full review CRUD nearly complete!*  
 *🟢 Server running and ready for testing*  
 *⏳ Phase 4 remaining (estimated 30-45 minutes)*  
