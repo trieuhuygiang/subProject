@@ -7,6 +7,10 @@
   box-sizing: border-box;
 }
 
+/*
+Changed Items
+*/
+
 :root {
   --primary-color: #009688;
   --primary-dark: #00796b;
@@ -15,7 +19,7 @@
   --text-color: #f4f4f4;
   --text-light: #a0a0a0;
   --background-color: #1d1d1d;
-  --border-color: #444444;
+  --second-color: #2c2c2c;
   --error-color: #e74c3c;
   --success-color: #2ecc71;
   --warning-color: #f39c12;
@@ -96,6 +100,73 @@ header {
   color: var(--primary-color);
 }
 
+/****************************************/
+/*Movies*/
+
+#movie-about {
+    padding: 100px;
+    background: linear-gradient(160deg, #1e1e1e, #2e2e2e);
+    background-color: var(--background-color);
+    box-shadow: var(--shadow);
+}
+
+.movie-section {
+  margin: 0 auto;
+  padding: 20px;
+}
+
+#movieSearch {
+  width: 100%;
+  max-width: 400px;
+  padding: 12px 20px;
+  font-size: 16px;
+  border: 2px solid #ddd;
+  border-radius: 30px;
+  background-color: #f8f8f8;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+#movieContainer {
+    padding: 10px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+
+#movieBox {
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    
+    margin: 10px;
+    border-radius: 21px;
+    background: linear-gradient(160deg, rgb(119, 0, 0), #3d0000);
+    width: 200px;
+    height: 300px;
+    overflow: hidden;
+
+    box-shadow: var(--shadow);
+    transition: all 0.4s ease;
+}
+
+#movieBox h1, #movieBox p {
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    
+    margin: 10px;
+    width: 200px;
+    height: 300px;
+}
+
+#movieBox:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 1);
+}
+
+/****************************************/
+
 /* 
  * Footer 
  */
@@ -104,7 +175,7 @@ footer {
   padding: 2rem;
   margin-top: auto;
   background-color: var(--background-color);
-  border-top: 1px solid var(--border-color);
+  border-top: 1px solid var(--second-color);
   color: var(--text-light);
 }
 
@@ -115,9 +186,9 @@ footer {
   max-width: 500px;
   margin: 2rem auto;
   padding: 2rem;
-  background-color: var(--white);
+  background-color: var(--background-color);
   border-radius: 8px;
-  box-shadow: var(--shadow);
+  box-shadow: 0px 1px 8px rgba(0, 0, 0, 1);
 }
 
 .form-group {
@@ -136,8 +207,9 @@ input[type="password"],
 input[type="file"] {
   width: 100%;
   padding: 0.75rem;
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
+  border: 2px solid var(--second-color);
+  border-color: var(--second-color);
+  border-radius: 15px;
   font-size: 1rem;
 }
 
@@ -160,7 +232,7 @@ input:focus {
 .form-footer {
   margin-top: 1.5rem;
   padding-top: 1.5rem;
-  border-top: 1px solid var(--border-color);
+  border-top: 1px solid var(--second-color);
   text-align: center;
 }
 
@@ -171,12 +243,13 @@ input:focus {
   display: inline-block;
   padding: 0.75rem 1.5rem;
   border: none;
-  border-radius: 4px;
+  border-radius: 15px;
   font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
   text-align: center;
   text-decoration: none;
+  box-shadow: var(--shadow);
   transition: background-color 0.3s, transform 0.2s;
 }
 
@@ -294,8 +367,17 @@ input:focus {
  * Home Page 
  */
 .welcome-section {
-  text-align: center;
-  padding: 3rem 0;
+  display: flex;
+  margin-top: 3rem;
+
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  padding: 30px;
+  border-radius: 25px;
+  background-color: #1e1e1e;
+  box-shadow: 0px 1px 8px rgba(0, 0, 0, 1);
 }
 
 .welcome-section h1 {
@@ -306,6 +388,10 @@ input:focus {
 
 .features-section {
   margin-top: 3rem;
+  padding: 30px;
+  border-radius: 25px;
+  background-color: #1e1e1e;
+  box-shadow: 0px 1px 8px rgba(0, 0, 0, 1);
 }
 
 .features-section h2 {
@@ -330,9 +416,9 @@ input:focus {
 }
 
 .feature-card {
-  background-color: var(--white);
+  background-color: var(--second-color);
   padding: 1.5rem;
-  border-radius: 8px;
+  border-radius: 30px;
   box-shadow: var(--shadow);
   transition: transform 0.3s;
 }
@@ -350,10 +436,10 @@ input:focus {
  * About Page 
  */
 .about-section, .tech-stack {
-  background-color: var(--white);
+  background-color: var(--background-color);
   padding: 2rem;
-  border-radius: 8px;
-  box-shadow: var(--shadow);
+  border-radius: 30px;
+  box-shadow: 0px 1px 8px rgba(0, 0, 0, 1);
   margin-bottom: 2rem;
 }
 
@@ -386,7 +472,7 @@ input:focus {
 }
 
 .profile-card {
-  background-color: var(--white);
+  background-color: var(--background-color);
   border-radius: 8px;
   box-shadow: var(--shadow);
   padding: 2rem;
@@ -434,7 +520,7 @@ input:focus {
 
 .info-item {
   padding: 1rem 0;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--second-color);
   display: flex;
   justify-content: space-between;
 }
@@ -449,9 +535,10 @@ input:focus {
 }
 
 .profile-section, .settings-section {
-  background-color: var(--white);
-  border-radius: 8px;
-  box-shadow: var(--shadow);
+  margin: 20px;
+  background-color: var(--background-color);
+  border-radius: 15px;
+  box-shadow: 0px 1px 8px rgba(0, 0, 0, 1);
   padding: 2rem;
 }
 
